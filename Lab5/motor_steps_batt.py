@@ -18,7 +18,7 @@ class Program():
   def execMain(self):
 
     
-    script.removeFile("trik_steps.txt")
+    script.removeFile("trik_data.txt")
     
     self.t0 = (time.time() * 1000 - self.__interpretation_started_timestamp__)
     self.t = 0
@@ -35,7 +35,7 @@ class Program():
     self.theta_l = brick.encoder("E4").read()
     self.theta_r = brick.encoder("E3").read()
     self.t = (time.time() * 1000 - self.__interpretation_started_timestamp__) - self.t0
-    script.writeToFile("trik_steps.txt", "2 " + "0" + " " + str(self.theta_l) + " " + str(self.theta_r) + " " + str(self.t) + " " + str(self.batt) + "\n")
+    script.writeToFile("trik_data.txt", "2 " + "0" + " " + str(self.theta_l) + " " + str(self.theta_r) + " " + str(self.t) + " " + str(self.batt) + "\n")
     
     self.t0 = (time.time() * 1000 - self.__interpretation_started_timestamp__)
     self.t = 0
@@ -75,7 +75,7 @@ class Program():
         script.wait(5)
       
       self.batt = brick.battery().readVoltage()
-      script.writeToFile("trik_steps.txt", self.buff)
+      script.writeToFile("trik_data.txt", self.buff)
       
       self.v = self.v + 10
     brick.stop()
